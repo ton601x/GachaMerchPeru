@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GACHA MERCH PERU | Catálogo Oficial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f7f7;
+            color: #111;
+        }
+
+        /* Cabecera */
+        header {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            font-weight: 300;
+        }
+
+        .subtitle {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* Navegación / Filtros */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #fff;
+            border-bottom: 2px solid #000;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 2px solid #000;
+            padding: 0.5rem 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #000;
+            color: #fff;
+        }
+
+        .btn-faq {
+            background: #000;
+            color: #fff;
+            border: 2px solid #000;
+        }
+
+        /* Contenedor Principal */
+        main {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            gap: 2rem;
+        }
+
+        /* Cuadrícula de Productos */
+        .product-grid {
+            flex: 3;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #000;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background: #f0f0f0;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .btn-view {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 0.8rem;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-view:hover {
+            background: #333;
+        }
+
+        /* Carrito Lateral */
+        .cart-sidebar {
+            flex: 1;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .cart-sidebar h2 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-items {
+            min-height: 100px;
+            margin-bottom: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Opciones de Pago */
+        .payment-options {
+            background: #f9f9f9;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-options p {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-options label {
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .totals {
+            margin-bottom: 1.5rem;
+        }
+
+        .totals h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .deposit-highlight {
+            background: #000;
+            color: #fff;
+            padding: 0.8rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .btn-checkout {
+            background: #25D366;
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-checkout:hover {
+            background: #128C7E;
+        }
+
+        /* Estilos Generales de Modales */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            position: relative;
+            border: 2px solid #000;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: #fff;
+            border: none;
+            z-index: 10;
+        }
+
+        .modal-gallery {
+            flex: 1 1 50%;
+            min-width: 0;
+            background: #f0f0f0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #modal-img {
+            max-width: 100%;
+            max-height: 280px;
+            object-fit: contain;
+        }
+
+        #modal-thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            max-width: 100%;
+            max-height: 120px;
+            overflow-y: auto;
+            padding: 5px;
+        }
+
+        .modal-info {
+            flex: 1 1 50%;
+            min-width: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-info h2 {
+            margin-bottom: 1rem;
+        }
+
+        .modal-info .price {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-info p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .btn-add-cart {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        /* Estilos de la Ventana FAQ */
+        .faq-content {
+            padding: 2.5rem;
+            width: 100%;
+        }
+
+        .faq-content h2 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .faq-section-title {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item h3 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            background: #f0f0f0;
+            padding: 0.5rem;
+            border-left: 4px solid #000;
+        }
+
+        .faq-item p {
+            color: #333;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            padding: 0.4rem 0.5rem;
+        }
+
+        .alert-security {
+            background: #fff;
+            border: 2px red solid;
+            color: #000;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                flex-direction: column;
+            }
+
+            .modal-gallery,
+            .modal-info {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">GACHA <span>MERCH PERU</span></div>
+        <p class="subtitle">Catálogo Exclusivo de Pre-órdenes - Importaciones desde China</p>
+    </header>
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterProducts('Todos')">Ver Todo</button>
+        <button class="filter-btn" onclick="filterProducts('Zenless Zone Zero')">Zenless Zone Zero</button>
+        <button class="filter-btn" onclick="filterProducts('Arknights')">Arknights</button>
+        <button class="filter-btn" onclick="filterProducts('Goddess of Victory: NIKKE')">NIKKE</button>
+        <button class="filter-btn" onclick="filterProducts('Blue Archive')">Blue Archive</button>
+        <button class="filter-btn btn-faq" onclick="openFaqModal()">📜 Reglas & FAQ</button>
+    </div>
+
+    <main>
+        <div class="product-grid" id="product-grid">
+            <!-- Productos inyectados vía JS -->
+        </div>
+
+        <aside class="cart-sidebar">
+            <h2>Mi Pedido</h2>
+            <div class="cart-items" id="cart-items">
+                <p style="color:#777; text-align:center;">El carrito está vacío</p>
+            </div>
+
+            <div class="totals">
+                <h3>Subtotal regular: S/ <span id="cart-total">0.00</span></h3>
+            </div>
+
+            <div class="payment-options">
+                <p>Elige tu modalidad de pago:</p>
+                <label>
+                    <input type="radio" name="paymentType" value="advance" checked onchange="updateCartTotals()">
+                    <strong>Reserva Estándar (10%)</strong><br>
+                    <span style="color:#666;">Adelantas 10% hoy, pagas el 90% a la entrega</span>
+                </label>
+                <label>
+                    <input type="radio" name="paymentType" value="full" onchange="updateCartTotals()">
+                    <strong>Pago Completo Pre-Compra (-10%)</strong><br>
+                    <span style="color:#666;">10% de descuento directo en tu pedido</span>
+                </label>
+            </div>
+
+            <div class="deposit-highlight">
+                Monto a Abonar Hoy: S/ <span id="deposit-amount">0.00</span>
+            </div>
+
+            <button class="btn-checkout" onclick="sendToWhatsApp()">Generar Pedido por WhatsApp</button>
+        </aside>
+    </main>
+
+    <!-- Modal Detalles de Producto -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('product-modal')">×</button>
+            <div class="modal-gallery">
+                <img id="modal-img" src="" alt="Producto">
+                <div id="modal-thumbnails"></div>
+            </div>
+            <div class="modal-info">
+                <h2 id="modal-title">Nombre</h2>
+                <div class="price">S/ <span id="modal-price">0.00</span></div>
+
+                <div id="modal-variants-container"></div>
+
+                <p id="modal-desc">Descripción detallada del producto.</p>
+                <button class="btn-add-cart" id="modal-add-btn">Añadir al Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Reglas del Servicio y FAQ -->
+    <div class="modal" id="faq-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('faq-modal')">×</button>
+            <div class="faq-content">
+
+                <div class="alert-security">
+                    <strong>⚠️ AVISO IMPORTANTE DE SEGURIDAD Y CONTACTO:</strong><br>
+                    Mi nombre es <strong>Ruben Antoni Lopez Trujillo (901991187)</strong>. Por favor, si otra persona o
+                    número se comunica con usted por el tema de su pedido, ignórelo o notifíquemelo de inmediato.
+                </div>
+
+                <h2>Reglas del Servicio y Condiciones de Compra</h2>
+
+                <div class="faq-item">
+                    <h3>Mecanismo de Pago en Precompra (10% Desc.)</h3>
+                    <p>Si el cliente efectúa el pago completo (100%) de su producto antes de que este llegue a Perú,
+                        obtiene un <strong>10% de descuento directo</strong> sobre el precio regular del catálogo.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Mecanismo de Reserva Estándar (Contra Entrega)</h3>
+                    <p>Si el cliente prefiere no pagar el total por adelantado, puede separar y pedir cualquier producto
+                        abonando únicamente el <strong>10% de reserva inicial</strong>. El 90% restante se paga de
+                        manera obligatoria al momento de recibir el producto en sus manos.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Tiempos de Llegada e Importación</h3>
+                    <p>Consolidamos la carga y traemos todos los pedidos en cajas mensuales. El tiempo estimado de
+                        importación tras la compra es de <strong>2 a 3 meses</strong>.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Precios Finales y Sin Cobros Ocultos</h3>
+                    <p>Todos los valores indicados en nuestro catálogo están expresados en Soles (PEN) e incluyen el
+                        costo del artículo, fletes internacionales desde origen, gastos de aduana y embalaje protector.
+                        No hay cobros ocultos (el único costo adicional posible es el envío local si requiere despacho a
+                        domicilio o provincia).</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Entregas y Envíos</h3>
+                    <p>Una vez que la caja mensual arriba a Perú y se clasifica la mercancía, se coordina el saldo
+                        pendiente (en caso de haber reservado con el 10%) y se procede con la entrega presencial o
+                        envío.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Invitación de Amigos (Programa de Referidos)</h3>
+                    <p>Por cada cliente que invite a 3 amigos que completen un pedido o reserva en el mismo lote
+                        mensual, el cliente invitador obtendrá un <strong>5% de descuento adicional acumulable</strong>
+                        en su compra.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Nota de Acumulación de Descuentos</h3>
+                    <p>Si el cliente paga su pedido completo por adelantado, puede sumar el 10% de preventa + el 5% por
+                        referidos, obteniendo un <strong>15% de descuento total</strong> sobre el precio regular del
+                        catálogo.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Política de Precios Estables y Garantía de No Especulación</h3>
+                    <p>Nos comprometemos a mantener el precio de venta oficial asignado en catálogo para cada producto.
+                        Bajo ninguna circunstancia aumentaremos el precio de un artículo de manera excesiva o arbitraria
+                        por motivos de alta demanda o escaso stock disponible. El precio fijado en soles se mantendrá
+                        transparente y justo en todo momento.</p>
+                </div>
+
+                <div class="faq-section-title">Preguntas Frecuentes (FAQ)</div>
+
+                <div class="faq-item">
+                    <h3>¿Cómo funcionan las dos formas de compra en preventa?</h3>
+                    <p>Tienes dos opciones para asegurar tus productos antes de que lleguen a Perú:<br>
+                        • <strong>Pago Completo (10% Off):</strong> Pagas el 100% de tu pedido por adelantado y recibes
+                        un 10% de descuento sobre el precio regular.<br>
+                        • <strong>Reserva del 10%:</strong> Pagas solo el 10% para congelar tu pedido y cancelas el 90%
+                        restante cuando te lo entreguemos en tus manos.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿De dónde proviene la merch oficial?</h3>
+                    <p>Toda nuestra mercadería es 100% oficial de sus tiendas oficiales. La importamos directamente
+                        desde la tienda oficial de la marca en China y la traemos a Perú mediante envíos programados.
+                        Esto nos permite asegurar que todos los artículos sean coleccionables originales, vengan en sus
+                        empaques de fábrica y lleguen al mejor precio posible.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Los precios del catálogo incluyen los gastos de importación y fletes?</h3>
+                    <p>Sí. Todos nuestros precios expresados en Soles ya tienen cubiertos los costos de flete
+                        internacional, empaque y gastos adicionales de aduana. Solo deberás coordinar el costo del envío
+                        local a tu dirección o agencia si aplica.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Puedo pedir merch que no esté en el catálogo publicado?</h3>
+                    <p>¡Sí! Traemos cualquier producto oficial de la tienda de miHoYo/Hoyoverse o franquicias afines. Si
+                        buscas un producto en específico que no ves en nuestro catálogo, mándanos una foto o enlace por
+                        chat y te enviaremos la cotización en soles.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Cuándo llega mi pedido?</h3>
+                    <p>Manejamos importaciones periódicas en cajas mensuales. Los productos tardan aproximadamente entre
+                        2 o 3 meses en llegar a Perú una vez procesada la carga. Te mantendremos informado en todo
+                        momento sobre el trayecto de tu paquete.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Qué sucede si reservo con el 10% y el producto ya llegó a Perú?</h3>
+                    <p>Te avisaremos tan pronto el lote esté disponible para coordinar la entrega. Para recibir o
+                        retirar tu producto, se debe saldar el 90% restante acordado.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Puedo pedir varios productos y juntarlos en un solo pedido?</h3>
+                    <p>Sí, todos los ítems que solicites se consolidarán dentro de la misma importación para que los
+                        recibas juntos.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>¿Cómo funciona el descuento por invitar a mis amigos?</h3>
+                    <p>¡Es muy sencillo! Si nos recomiendas y 3 de tus amigos realizan su pedido o reserva en la
+                        importación del mes, te premiamos con un 5% de descuento adicional en tu compra. Solo pídele a
+                        tus amigos que mencionen tu nombre/usuario al escribirnos para activar tu beneficio.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 1000,
+                name: 'Zero x Flash Soul Serie de Cartas Coleccionables 2',
+                game: 'Zenless Zone Zero',
+                price: 175.00,
+                variants: [
+                    {name: 'Pack Completo (16 Sobres)', price: 175.00},
+                    {name: 'Unidad (1 Sobre)', price: 15.00}
+                ],
+                gallery: [
+                    'img/ZZZ/Productos general/Cartes Flash vol2.png',
+                    'img/ZZZ/Productos general/cartasflash.png',
+                    'img/ZZZ/Productos general/cartascard2.png'
+                ],
+                desc: 'Pines metálicos de aleación de zinc. Puedes solicitar la unidad que gustes o el pack completo con descuento especial.'
+            },
+            {
+                id: 1001,
+                name: 'Serie Shadow - Insignia',
+                game: 'Zenless Zone Zero',
+                price: 22.00,
+                gallery: [
+                    'img/zzz_shadow_pin_1.jpg'
+                ],
+                desc: 'Serie Shadow: Insignia metálica coleccionable oficial de Zenless Zone Zero. Incluye acabado de alta calidad y empaque protector original de miHoYo. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1002,
+                name: 'Serie Shadow - Porta Tarjeta / Llavero',
+                game: 'Zenless Zone Zero',
+                price: 35.00,
+                gallery: [
+                    'img/zzz_shadow_cardholder_1.jpg'
+                ],
+                desc: 'Serie Shadow: Porta tarjeta con llavero coleccionable oficial de Zenless Zone Zero. Incluye enganche metálico, marco rígido y empaque protector original de miHoYo. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 2,
+                name: 'Pines Metálicos - Colección ZZZ',
+                game: 'Zenless Zone Zero',
+                price: 40.00,
+                variants: [
+                    {name: 'Unidad (1 Pin a elección)', price: 40.00},
+                    {name: 'Pack Completo (Set de 10 Pines)', price: 350.00}
+                ],
+                gallery: [
+                    'https://via.placeholder.com/400x400?text=Pin+Unidad',
+                    'https://via.placeholder.com/400x400?text=Pack+Completo+10+Pines'
+                ],
+                desc: 'Pines metálicos de aleación de zinc. Puedes solicitar la unidad que gustes o el pack completo con descuento especial.'
+            },
+            {
+                id: 1003,
+                name: 'Serie Cinema - Tarjeta / Card Coleccionable',
+                game: 'Zenless Zone Zero',
+                price: 32.00,
+                gallery: [
+                    'img/zzz_cinema_card_1.jpg'
+                ],
+                desc: 'Serie Cinema: Tarjeta / Card coleccionable oficial de Zenless Zone Zero. Incluye acabados especiales de alta calidad y empaque protector original de miHoYo[cite: 4]. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1004,
+                name: 'Serie Cinema - Placa de Acrílico',
+                game: 'Zenless Zone Zero',
+                price: 48.00,
+                variants: [
+                    {name: 'Solo Acrílico (Sin Stand)', price: 48.00},
+                    {name: 'Acrílico + Stand Base', price: 100.00}
+                ],
+                gallery: [
+                    'img/zzz_cinema_acrylic_1.jpg'
+                ],
+                desc: 'Serie Cinema: Placa de acrílico coleccionable oficial de Zenless Zone Zero. Incluye impresión de alta resolución y empaque protector original de miHoYo[cite: 5]. Disponible en opción solo acrílico o con base/stand exhibidor, y para variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1005,
+                name: 'Serie Cinema - Stand Exhibidor de Acrílico',
+                game: 'Zenless Zone Zero',
+                price: 78.00,
+                gallery: [
+                    'img/zzz_cinema_stand_1.jpg'
+                ],
+                desc: 'Serie Cinema: Stand exhibidor de acrílico oficial de Zenless Zone Zero. Incluye marco protector con detalles temáticos de New Eridu, soporte de sobremesa y empaque original de miHoYo. Diseñado para colocar y exhibir las placas de acrílico de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1006,
+                name: 'Serie Art - Figura / Stand Acrílico',
+                game: 'Zenless Zone Zero',
+                price: 55.00,
+                gallery: [
+                    'img/zzz_art_acrylic_stand_1.jpg'
+                ],
+                desc: 'Serie Art: Figura / Stand acrílico oficial de Zenless Zone Zero. Incluye base encajable con el logo de la serie, impresión a todo color y empaque protector original de miHoYo. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1007,
+                name: 'Serie Art - Insignia / Pin Metálico',
+                game: 'Zenless Zone Zero',
+                price: 24.00,
+                gallery: [
+                    'img/zzz_art_pin_1.jpg'
+                ],
+                desc: 'Serie Art: Insignia metálica coleccionable oficial de Zenless Zone Zero. Incluye acabado brillante de alta calidad y empaque protector original de miHoYo. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1008,
+                name: 'Serie Chibi - Colgante / Llavero Acrílico',
+                game: 'Zenless Zone Zero',
+                price: 38.00,
+                gallery: [
+                    'img/zzz_chibi_keychain_1.jpg'
+                ],
+                desc: 'Serie Chibi: Colgante / Llavero de acrílico oficial de Zenless Zone Zero. Incluye argolla metálica resistente, dije complementario y empaque protector original de miHoYo. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1009,
+                name: 'Serie Chibi - Insignia / Pin Metálico',
+                game: 'Zenless Zone Zero',
+                price: 20.00,
+                gallery: [
+                    'img/zzz_chibi_pin_1.jpg'
+                ],
+                desc: 'Serie Chibi: Insignia metálica coleccionable oficial de Zenless Zone Zero. Incluye acabado de alta calidad y empaque protector original de miHoYo. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1010,
+                name: 'Serie HB2U - Tarjeta / Card Cumpleaños',
+                game: 'Zenless Zone Zero',
+                price: 35.00,
+                gallery: [
+                    'img/zzz_hb2u_card_1.jpg'
+                ],
+                desc: 'Serie HB2U: Tarjeta / Card conmemorativa de cumpleaños oficial de Zenless Zone Zero. Incluye diseño estilo polaroid con acabados especiales y empaque protector original de miHoYo. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1011,
+                name: 'Serie Facciones - Insignia Metálica',
+                game: 'Zenless Zone Zero',
+                price: 52.00,
+                gallery: [
+                    'img/zzz_facciones_pin_1.jpg'
+                ],
+                desc: 'Serie Facciones: Insignia metálica coleccionable oficial de Zenless Zone Zero. Incluye acabados en relieve de alta calidad y empaque protector original de miHoYo. Disponible en variados modelos de facciones de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1012,
+                name: 'Serie Radio Time - Colección Oficial',
+                game: 'Zenless Zone Zero',
+                price: 24.00,
+                variants: [
+                    {name: 'Pin / Insignia Metálica', price: 24.00},
+                    {name: 'Llavero Acrílico', price: 44.00}
+                ],
+                gallery: [
+                    'img/zzz_radio_time_1.jpg'
+                ],
+                desc: 'Serie Radio Time: Colección oficial de Zenless Zone Zero. Incluye acabados de alta calidad y empaque protector original de miHoYo. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1013,
+                name: 'Serie de Videos FM - Colección Oficial',
+                game: 'Zenless Zone Zero',
+                price: 20.00,
+                variants: [
+                    {name: 'Insignia / Pin Metálico', price: 20.00},
+                    {name: 'Juego de Boleto', price: 32.00},
+                    {name: 'Stand / Figura de Acrílico', price: 48.00},
+                    {name: 'Pack Completo (Insignia + Boleto + Acrílico)', price: 95.00}
+                ],
+                gallery: [
+                    'img/zzz_videos_fm_1.jpg'
+                ],
+                desc: 'Serie de Videos FM: Colección oficial de Zenless Zone Zero. Disponibles por pieza individual o en pack promocional completo. Incluye acabados de alta calidad y empaque protector original de miHoYo. Disponible en variados personajes de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1014,
+                name: 'Series FES Animation CM - Colección Oficial',
+                game: 'Zenless Zone Zero',
+                price: 20.00,
+                variants: [
+                    {name: 'Caja Sorpresa', price: 20.00},
+                    {name: 'Insignia Cuadrada', price: 22.00},
+                    {name: 'Set de Boletos', price: 32.00},
+                    {name: 'Tarjeta Acrílica', price: 36.00},
+                    {name: 'Carpeta', price: 40.00},
+                    {name: 'Llavero Acrílico', price: 45.00},
+                    {name: 'Stand Acrílico (Mediano)', price: 66.00},
+                    {name: 'Conjunto de Insignias', price: 78.00},
+                    {name: 'Stand Acrílico (Grande)', price: 87.00},
+                    {name: 'Toalla Temática', price: 100.00}
+                ],
+                gallery: [
+                    'img/zzz_fes_animation_1.jpg'
+                ],
+                desc: 'Series FES Animation CM: Colección oficial de Zenless Zone Zero. Puedes elegir el modelo o personaje de tu preferencia (no es aleatorio). Incluye acabados de alta calidad y empaque protector original de miHoYo. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1015,
+                name: 'Serie Metal',
+                game: 'Zenless Zone Zero',
+                price: 20.00,
+                variants: [
+                    {name: 'Unidad (Aleatorio)', price: 20.00},
+                    {name: 'Pack Completo (10 unidades)', price: 180.00}
+                ],
+                gallery: [
+                    'img/zzz_metal_series_1.jpg'
+                ],
+                desc: 'Serie Metal: Colección metálica coleccionable oficial de Zenless Zone Zero. El contenido es aleatorio al azar (blind pack). Incluye acabados metálicos de alta calidad y empaque sellado original de miHoYo. Disponible por unidad o en caja/pack de 10 unidades. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1016,
+                name: 'Caja Sorpresa de Mini Insignias de Avatar de Agente',
+                game: 'Zenless Zone Zero',
+                price: 16.00,
+                variants: [
+                    {name: 'Unidad (Aleatorio)', price: 16.00},
+                    {name: 'Pack (8 unidades)', price: 100.00}
+                ],
+                gallery: [
+                    'img/zzz_mini_badges_agent_1.jpg'
+                ],
+                desc: 'Caja sorpresa de mini insignias de avatar de agente oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar, disponible en 6 versiones distintas. Incluye acabados de alta calidad y empaque sellado original de miHoYo. Disponible por unidad o en pack de 8 unidades. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1017,
+                name: 'Caja Sorpresa de Figuras en Miniatura Bangbu - Serie Hundred Flavors Kingdom',
+                game: 'Zenless Zone Zero',
+                price: 72.00,
+                variants: [
+                    {name: 'Unidad (Aleatorio)', price: 72.00},
+                    {name: 'Pack (12 unidades)', price: 820.00}
+                ],
+                gallery: [
+                    'img/zzz_bangbu_hundred_flavors_1.jpg'
+                ],
+                desc: 'Serie Hundred Flavors Kingdom: Caja sorpresa de figuras en miniatura de Bangbu oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar. Incluye acabados de alta calidad, detalles pintados a mano y empaque sellado original de miHoYo. Disponible por unidad o en pack de 12 unidades. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1018,
+                name: 'Caja Sorpresa de Figuras TinyAgents',
+                game: 'Zenless Zone Zero',
+                price: 75.00,
+                variants: [
+                    {name: 'Unidad (Aleatorio)', price: 75.00},
+                    {name: 'Pack (12 unidades)', price: 830.00}
+                ],
+                gallery: [
+                    'img/zzz_tinyagents_figures_1.jpg'
+                ],
+                desc: 'Caja sorpresa de figuras TinyAgents oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar. Incluye acabado detallado de alta calidad y empaque sellado original de miHoYo. Disponible por unidad o en pack de 12 unidades. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1019,
+                name: 'Caja Sorpresa de Peluche del Reino Vegetal de Bangbu',
+                game: 'Zenless Zone Zero',
+                price: 85.00,
+                variants: [
+                    {name: 'Unidad (Aleatorio)', price: 85.00},
+                    {name: 'Pack (6 unidades)', price: 480.00}
+                ],
+                gallery: [
+                    'img/zzz_bangbu_plant_kingdom_plush_1.jpg'
+                ],
+                desc: 'Serie Reino Vegetal de Bangbu: Caja sorpresa de peluche oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar. Incluye acabados suaves de alta calidad, detalles bordados y empaque sellado original de miHoYo. Disponible por unidad o en pack de 6 unidades. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1020,
+                name: 'Caja Sorpresa Mini Tarjeta Colgante - Serie Diario de Trabajos',
+                game: 'Zenless Zone Zero',
+                price: 30.00,
+                variants: [
+                    {name: 'Unidad (Aleatorio)', price: 30.00},
+                    {name: 'Pack (9 unidades)', price: 255.00}
+                ],
+                gallery: [
+                    'img/zzz_work_log_hanging_card_1.jpg'
+                ],
+                desc: 'Serie Diario de Trabajos: Caja sorpresa de mini tarjeta colgante oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar. Incluye acabados de alta calidad, enganche para colgar y empaque sellado original de miHoYo. Disponible por unidad o en pack de 9 unidades. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1021,
+                name: 'Caja Sorpresa de Figuras - Serie Bomb Party',
+                game: 'Zenless Zone Zero',
+                price: 75.00,
+                variants: [
+                    {name: 'Unidad (Aleatorio)', price: 75.00},
+                    {name: 'Pack (12 unidades)', price: 830.00}
+                ],
+                gallery: [
+                    'img/zzz_bomb_party_figures_1.jpg'
+                ],
+                desc: 'Serie Bomb Party: Caja sorpresa de figuras coleccionables oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar. Incluye acabados de alta calidad, detalles esculpidos y empaque sellado original de miHoYo. Disponible por unidad o en pack de 12 unidades. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1022,
+                name: 'Caja Sorpresa de Bangboo Garden Kingdoms',
+                game: 'Zenless Zone Zero',
+                price: 95.00,
+                variants: [
+                    {name: 'Paquete (5 unidades)', price: 95.00},
+                    {name: 'Pack (12 paquetes)', price: 1080.00}
+                ],
+                gallery: [
+                    'img/zzz_bangboo_garden_kingdoms_1.jpg'
+                ],
+                desc: 'Serie Bangboo Garden Kingdoms: Caja sorpresa coleccionable oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar. Incluye acabados de alta calidad y empaque sellado original de miHoYo. Disponible por paquete de 5 unidades o en pack completo de 12 paquetes. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1023,
+                name: 'Caja Sorpresa de Llavero de Peluche Meowy Light',
+                game: 'Zenless Zone Zero',
+                price: 72.00,
+                variants: [
+                    {name: 'Unidad (Aleatorio)', price: 72.00},
+                    {name: 'Pack (9 unidades)', price: 615.00}
+                ],
+                gallery: [
+                    'img/zzz_meowy_light_plush_keychain_1.jpg'
+                ],
+                desc: 'Serie Meowy Light: Caja sorpresa de llavero de peluche oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar. Incluye acabados suaves de alta calidad, enganche metálico y empaque sellado original de miHoYo. Disponible por unidad o en pack de 9 unidades. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1024,
+                name: 'Caja Sorpresa - Serie Llavero de Peluche',
+                game: 'Zenless Zone Zero',
+                price: 51.00,
+                gallery: [
+                    'img/zzz_plush_keychain_blindbox_1.jpg'
+                ],
+                desc: 'Serie Llavero de Peluche: Caja sorpresa oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar. Incluye acabados suaves de alta calidad, enganche metálico y empaque sellado original de miHoYo. Disponible en variados modelos de la colección. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1025,
+                name: 'Bangboo Standee Series Cool Bangboo',
+                game: 'Zenless Zone Zero',
+                price: 58.00,
+                variants: [
+                    {name: 'Unidad (Aleatorio)', price: 58.00},
+                    {name: 'Pack (6 unidades)', price: 330.00}
+                ],
+                gallery: [
+                    'img/zzz_cool_bangboo_standee_1.jpg'
+                ],
+                desc: 'Serie Cool Bangboo Standee: Caja sorpresa de figura / stand de acrílico oficial de Zenless Zone Zero. El producto dentro de la caja es aleatorio al azar (cuenta con 2 versiones distintas de caja). Incluye base encajable, impresión de alta calidad y empaque sellado original de miHoYo. Disponible por unidad o en pack de 6 unidades. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 1026,
+                name: 'Serie Pascal - Almohada Larga de Felpa',
+                game: 'Zenless Zone Zero',
+                price: 180.00,
+                gallery: [
+                    'img/zzz_pascal_long_plush_pillow_1.jpg'
+                ],
+                desc: 'Serie Pascal: Almohada larga de felpa oficial de Zenless Zone Zero[cite: 23]. Disponible en 3 versiones al mismo precio, puedes elegir la de tu preferencia (no es aleatorio)[cite: 23]. Incluye textura suave al tacto, bordados de alta calidad y empaque protector original de miHoYo[cite: 23]. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 3,
+                name: 'Cartas Coleccionables - NIKKE',
+                game: 'Goddess of Victory: NIKKE',
+                price: 25.00,
+                variants: [
+                    {name: 'Unidad (1 Carta aleatoria)', price: 25.00},
+                    {name: 'Caja Completa (20 Cartas)', price: 420.00}
+                ],
+                gallery: [
+                    'https://via.placeholder.com/400x400?text=Carta+Unidad'
+                ],
+                desc: 'Cartas holográficas oficiales. Disponibles por unidad o la caja sellada de fábrica.'
+            },
+            {
+                id: 4,
+                name: 'Peluche Oficial - Kal\'tsit',
+                game: 'Arknights',
+                price: 120.00,
+                gallery: [
+                    'https://via.placeholder.com/400x400?text=Peluche+Kaltsit'
+                ],
+                desc: 'Peluche de 20cm con ropa removible. Alta calidad. Tiempo de llegada: 2 a 3 meses.'
+            }
+        ];
+
+        let cart = [];
+        let currentSelectedProduct = null;
+        let selectedVariant = null;
+
+        function renderProducts(filter = 'Todos') {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                if (filter === 'Todos' || product.game === filter) {
+                    const mainImg = product.gallery ? product.gallery[0] : '';
+
+                    const priceDisplay = product.variants
+                        ? `Desde S/ ${product.variants[0].price.toFixed(2)}`
+                        : `S/ ${product.price.toFixed(2)}`;
+
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <img src="${mainImg}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <div class="price">${priceDisplay}</div>
+                        <button class="btn-view" onclick="openModal(${product.id})">Ver Detalles</button>
+                    `;
+                    grid.appendChild(card);
+                }
+            });
+        }
+
+        function filterProducts(gameName) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderProducts(gameName);
+        }
+
+        function openFaqModal() {
+            document.getElementById('faq-modal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function openModal(id) {
+            currentSelectedProduct = products.find(p => p.id === id);
+            document.getElementById('modal-title').innerText = currentSelectedProduct.name;
+            document.getElementById('modal-desc').innerText = currentSelectedProduct.desc;
+
+            const variantsContainer = document.getElementById('modal-variants-container');
+            variantsContainer.innerHTML = '';
+
+            if (currentSelectedProduct.variants && currentSelectedProduct.variants.length > 0) {
+                selectedVariant = currentSelectedProduct.variants[0];
+                document.getElementById('modal-price').innerText = selectedVariant.price.toFixed(2);
+
+                let selectHTML = `<label style="font-weight:bold; display:block; margin-bottom:5px;">Selecciona Opción:</label>`;
+                selectHTML += `<select id="variant-select" onchange="changeVariant()" style="width:100%; padding:0.5rem; border:2px solid #000; font-size:0.9rem; margin-bottom: 1rem;">`;
+
+                currentSelectedProduct.variants.forEach((v, index) => {
+                    selectHTML += `<option value="${index}">${v.name} - S/ ${v.price.toFixed(2)}</option>`;
+                });
+
+                selectHTML += `</select>`;
+                variantsContainer.innerHTML = selectHTML;
+            } else {
+                selectedVariant = null;
+                document.getElementById('modal-price').innerText = currentSelectedProduct.price.toFixed(2);
+            }
+
+            const gallery = currentSelectedProduct.gallery || [];
+            const mainImg = document.getElementById('modal-img');
+            const thumbnailsContainer = document.getElementById('modal-thumbnails');
+
+            mainImg.src = gallery[0] || '';
+            thumbnailsContainer.innerHTML = '';
+
+            if (gallery.length > 1) {
+                gallery.forEach((imgUrl, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = imgUrl;
+                    thumb.style.width = '50px';
+                    thumb.style.height = '50px';
+                    thumb.style.objectFit = 'cover';
+                    thumb.style.cursor = 'pointer';
+                    thumb.style.border = index === 0 ? '2px solid #000' : '1px solid #ccc';
+
+                    thumb.onclick = () => {
+                        mainImg.src = imgUrl;
+                        Array.from(thumbnailsContainer.children).forEach(t => t.style.border = '1px solid #ccc');
+                        thumb.style.border = '2px solid #000';
+                    };
+
+                    thumbnailsContainer.appendChild(thumb);
+                });
+            }
+
+            document.getElementById('modal-add-btn').onclick = () => {
+                addToCartWithVariant(currentSelectedProduct, selectedVariant);
+                closeModal('product-modal');
+            };
+
+            document.getElementById('product-modal').style.display = 'flex';
+        }
+
+        function changeVariant() {
+            const index = document.getElementById('variant-select').value;
+            selectedVariant = currentSelectedProduct.variants[index];
+            document.getElementById('modal-price').innerText = selectedVariant.price.toFixed(2);
+        }
+
+        function addToCartWithVariant(product, variant) {
+            const itemPrice = variant ? variant.price : product.price;
+            const itemName = variant ? `${product.name} (${variant.name})` : product.name;
+            const itemId = variant ? `${product.id}-${variant.name}` : product.id;
+
+            const existing = cart.find(item => item.cartId === itemId);
+
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({
+                    cartId: itemId,
+                    id: product.id,
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: 1
+                });
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(cartId) {
+            cart = cart.filter(item => item.cartId !== cartId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="color:#777; text-align:center;">El carrito está vacío</p>';
+            } else {
+                cart.forEach(item => {
+                    const el = document.createElement('div');
+                    el.className = 'cart-item';
+                    el.innerHTML = `
+                        <span>${item.quantity}x ${item.name}</span>
+                        <span>S/ ${(item.price * item.quantity).toFixed(2)} <button onclick="removeFromCart('${item.cartId}')" style="margin-left:10px; cursor:pointer; background:none; border:none; color:red; font-weight:bold;">X</button></span>
+                    `;
+                    cartItemsContainer.appendChild(el);
+                });
+            }
+            updateCartTotals();
+        }
+
+        function updateCartTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cart-total').innerText = subtotal.toFixed(2);
+
+            const paymentType = document.querySelector('input[name="paymentType"]:checked').value;
+            let depositAmount = 0;
+
+            if (paymentType === 'advance') {
+                depositAmount = subtotal * 0.10; // 10% Reserva
+            } else if (paymentType === 'full') {
+                depositAmount = subtotal * 0.90; // 10% Descuento Preventa
+            }
+
+            document.getElementById('deposit-amount').innerText = depositAmount.toFixed(2);
+        }
+
+        function sendToWhatsApp() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío. Agrega productos para continuar.');
+                return;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const paymentType = document.querySelector('input[name="paymentType"]:checked').value;
+
+            let text = `¡Hola GACHA MERCH PERU! (Atención: Ruben Antoni Lopez Trujillo)\n\nMe gustaría registrar la siguiente orden:\n\n`;
+
+            cart.forEach(item => {
+                text += `▪️ ${item.quantity}x ${item.name} (S/ ${(item.price * item.quantity).toFixed(2)})\n`;
+            });
+
+            text += `\n*Subtotal regular del catálogo:* S/ ${subtotal.toFixed(2)}\n\n`;
+
+            if (paymentType === 'advance') {
+                text += `*Modalidad Seleccionada:* Reserva Estándar (10%) 📦\n`;
+                text += `*MONTO DE RESERVA A TRANSFERIR HOY:* S/ ${(subtotal * 0.10).toFixed(2)}\n`;
+                text += `*Saldo pendiente contra entrega (90%):* S/ ${(subtotal * 0.90).toFixed(2)}\n`;
+            } else if (paymentType === 'full') {
+                text += `*Modalidad Seleccionada:* Pago Completo Preventa 🚀\n`;
+                text += `(Aplica 10% de Descuento Preventa)\n\n`;
+                text += `*TOTAL A TRANSFERIR HOY:* S/ ${(subtotal * 0.90).toFixed(2)}\n`;
+            }
+
+            text += `\nPor favor, confírmame los datos de Yape/Plin para realizar el abono.`;
+
+            const phoneNumber = '51901991187';
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
+        }
+
+        renderProducts();
+    </script>
+</body>
+
+</html>
