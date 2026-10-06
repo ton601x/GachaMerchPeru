@@ -43,6 +43,31 @@
             color: #ccc;
         }
 
+        .search-container {
+            margin: 20px 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #searchInput {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #1a1a1a;
+            color: #fff;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #searchInput:focus {
+            border-color: #ff5500;
+            /* Cambia al color de tu marca */
+        }
+
         /* Navegación / Filtros */
         .filters {
             display: flex;
@@ -401,6 +426,10 @@
     <header>
         <div class="logo">GACHA <span>MERCH PERU</span></div>
         <p class="subtitle">Catálogo Exclusivo de Pre-órdenes - Importaciones desde China</p>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar por personaje o producto..."
+                oninput="filterCatalog()" />
+        </div>
     </header>
 
     <div class="filters">
@@ -629,6 +658,41 @@
                     'img/ZZZ/Productos general/cartascard2.png'
                 ],
                 desc: 'Pines metálicos de aleación de zinc. Puedes solicitar la unidad que gustes o el pack completo con descuento especial.'
+            },
+            {
+                id: 14003,
+                name: 'Caja Sorpresa Figuras Miniatura de agentes de VALORANT',
+                game: 'Riotgames',
+                variants: [
+                    { name: 'Unidad (Aleatorio)', price: 76.00 },
+                    { name: 'Pack Completo (x12)', price: 820.00 }
+                ],
+                gallery: [
+                    'img/Riotgames/Blind Box/valorant_figuras_miniaturas_chibi_agentes_grupo.png',
+                    'img/Riotgames/Blind Box/pop_mart_valorant_agents_caja_exhibidora_completa.png',
+                    'img/Riotgames/Blind Box/pop_mart_valorant_agents_caja_sorpresa_individual.png'
+                ],
+                desc: 'Colección de figuras miniatura en caja ciega (Blind Box) de los agentes de VALORANT. Diseños estilo chibi detallados con bases individuales, ideales para exhibición y colección. Disponible en unidad aleatoria o en pack completo de 12 unidades sin repetir. Producto oficial de Riot Games con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 15000,
+                name: 'Stand Acrílico Colaboración Lawson',
+                game: 'Neverness to Everness',
+                price: 48.00,
+                gallery: [
+                    'img/NTE/lAWSON/neverness_everness_lawson_standees_acrilicos_personajes.png'
+                ],
+                desc: 'Stand de acrílico conmemorativo de la colaboración oficial entre Neverness to Everness y Lawson. Disponible en versiones de los personajes Lacrimosa, Mint y Blackbird vistiendo atuendos temáticos de la tienda. Fabricado en acrílico de alta densidad con base decorada e impresión de alta resolución. Producto oficial con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 15001,
+                name: 'Peluche Colaboración Lawson',
+                game: 'Neverness to Everness',
+                price: 92.00,
+                gallery: [
+                    'img/NTE/lAWSON/neverness_everness_lawson_peluches_muñecos_personajes.png'
+                ],
+                desc: 'Peluche coleccionable conmemorativo de la colaboración oficial entre Neverness to Everness y Lawson. Disponible en versiones de los personajes Lacrimosa, Mint y Blackbird con trajes temáticos removibles de la tienda mediante cierre de velcro. Confeccionado en tela ultrasuave con acabados y costuras de alta calidad. Producto oficial con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
             },
             {
                 id: 1001,
@@ -1774,14 +1838,42 @@
                 desc: 'Caja de regalo conmemorativa "Set de Ingreso Endfield" oficial de Arknights: Endfield. Incluye un termo de acero inoxidable con funda táctica, lanyard con colgante de peluche, credencial metálica de personal y puntero/herramienta temática. Presentado en una elegante caja de edición especial ideal para coleccionistas. Producto oficial con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
             },
             {
-                id: 4,
-                name: 'Peluche Oficial - Kal\'tsit',
-                game: 'Arknights',
-                price: 120.00,
-                gallery: [
-                    'https://via.placeholder.com/400x400?text=Peluche+Kaltsit'
+                id: 14000,
+                name: 'Set de Pins Blind Box HEARTSTEEL',
+                game: 'Riotgames',
+                price: 43.00,
+                variants: [
+                    { name: 'Unidad (Aleatorio)', price: 43.00 },
+                    { name: 'Pack Completo (x6)', price: 232.00 }
                 ],
-                desc: 'Peluche de 20cm con ropa removible. Alta calidad. Tiempo de llegada: 2 a 3 meses.'
+                gallery: [
+                    'img/league_of_legends_heartsteel_pin_set_blind_box_1.jpg'
+                ],
+                desc: 'Set de pins coleccionables en caja ciega (Blind Box) de la banda HEARTSTEEL de League of Legends. Disponible en caja individual aleatoria o en pack completo de 6 unidades sin repetir. Incluye insignias metálicas con acabado esmaltado de alta calidad y diseños estilo chibi de los integrantes: Ezreal, Kayn, Aphelios, Yone, K\'Sante y Sett. Producto oficial de Riot Games con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 14001,
+                name: 'Keycaps Decorativos para Teclado Blind Box',
+                game: 'Riotgames',
+                price: 61.00,
+                variants: [
+                    { name: 'Unidad (Aleatorio)', price: 61.00 },
+                    { name: 'Pack Completo (x15)', price: 823.00 }
+                ],
+                gallery: [
+                    'img/valorant_soap_studio_keyboard_keycaps_blind_box_1.jpg'
+                ],
+                desc: 'Set de keycaps decorativos coleccionables para teclado en caja ciega (Blind Box) de VALORANT, en colaboración con Soap Studio. Diseños en miniatura estilo chibi con los agentes del juego, ideales para personalizar teclas mecánicas estándar. Producto oficial de Riot Games con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 14002,
+                name: 'Colgante de Peluche Agentes / Plush Pendant',
+                game: 'Riotgames',
+                price: 55.00,
+                gallery: [
+                    'img/valorant_bilibili_goods_agent_plush_pendant_1.jpg'
+                ],
+                desc: 'Colgante de peluche oficial de la línea bilibili Goods para VALORANT. Modelos estilo chibi de los agentes con sus respectivos accesorios y detalles característicos, confeccionados en peluche suave con argolla metálica superior para sujetar a mochilas o llaveros. Producto oficial de Riot Games con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
             }
         ];
 
@@ -1818,6 +1910,20 @@
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             renderProducts(gameName);
+        }
+
+        function filterCatalog() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.product-card');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
 
         function openFaqModal() {
