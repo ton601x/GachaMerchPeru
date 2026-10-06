@@ -425,7 +425,7 @@
 
     <header>
         <div class="logo">GACHA <span>MERCH PERU</span></div>
-        <p class="subtitle">Catálogo Exclusivo de Pre-órdenes - Importaciones desde China</p>
+        <p class="subtitle">Catálogo para Pre-órdenes o Reservas - Desde tiendas ofciales de China</p>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Buscar por personaje o producto..."
                 oninput="filterCatalog()" />
@@ -2072,7 +2072,7 @@
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const paymentType = document.querySelector('input[name="paymentType"]:checked').value;
 
-            let text = `¡Hola GACHA MERCH PERU! (Atención: Ruben Antoni Lopez Trujillo)\n\nMe gustaría registrar la siguiente orden:\n\n`;
+            let text = `¡Hola me gustaría registrar la siguiente orden:\n\n`;
 
             cart.forEach(item => {
                 text += `▪️ ${item.quantity}x ${item.name} (S/ ${(item.price * item.quantity).toFixed(2)})\n`;
@@ -2082,7 +2082,7 @@
 
             if (paymentType === 'advance') {
                 text += `*Modalidad Seleccionada:* Reserva Estándar (10%) 📦\n`;
-                text += `*MONTO DE RESERVA A TRANSFERIR HOY:* S/ ${(subtotal * 0.10).toFixed(2)}\n`;
+                text += `*Monto de reserva a transferir hoy:* S/ ${(subtotal * 0.10).toFixed(2)}\n`;
                 text += `*Saldo pendiente contra entrega (90%):* S/ ${(subtotal * 0.90).toFixed(2)}\n`;
             } else if (paymentType === 'full') {
                 text += `*Modalidad Seleccionada:* Pago Completo Preventa 🚀\n`;
