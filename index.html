@@ -14,13 +14,13 @@
         }
 
         body {
-            background-color: #f7f7f7;
+            background-color: #C9DCE8;
             color: #111;
         }
 
         /* Cabecera */
         header {
-            background-color: #000;
+            background-color: #1D2D44;
             color: #fff;
             text-align: center;
             padding: 2.5rem 1rem;
@@ -55,16 +55,21 @@
             max-width: 400px;
             padding: 10px 15px;
             font-size: 1rem;
-            border: 1px solid #333;
+            border: 1px solid #3E5C76;
             border-radius: 8px;
-            background-color: #1a1a1a;
-            color: #fff;
+            background-color: #8AA9C4;
+            color: #1D2D44;
             outline: none;
             transition: border-color 0.3s ease;
         }
 
+        #searchInput::placeholder {
+            color: #fff;
+            opacity: 0.7;
+        }
+
         #searchInput:focus {
-            border-color: #ff5500;
+            border-color: #e7824f;
             /* Cambia al color de tu marca */
         }
 
@@ -74,14 +79,15 @@
             justify-content: center;
             gap: 1rem;
             padding: 1.5rem;
-            background: #fff;
+            background: #EAF2F8;
             border-bottom: 2px solid #000;
             flex-wrap: wrap;
         }
 
         .filter-btn {
-            background: none;
-            border: 2px solid #000;
+            background: #C9DCE8;
+            color: #1D2D44;
+            border: 2px solid #1D2D44;
             padding: 0.5rem 1.5rem;
             font-weight: bold;
             cursor: pointer;
@@ -90,12 +96,12 @@
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: #000;
+            background: #1D2D44;
             color: #fff;
         }
 
         .btn-faq {
-            background: #000;
+            background: #1D2D44;
             color: #fff;
             border: 2px solid #000;
         }
@@ -199,10 +205,10 @@
 
         /* Opciones de Pago */
         .payment-options {
-            background: #f9f9f9;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            margin-bottom: 1.5rem;
+            background-color: #EAF2F8;
+            border: 1px solid #C9DCE8;
+            border-radius: 8px;
+            padding: 15px;
         }
 
         .payment-options p {
@@ -228,8 +234,8 @@
         }
 
         .deposit-highlight {
-            background: #000;
-            color: #fff;
+            background: #fff;
+            color: #000;
             padding: 0.8rem;
             text-align: center;
             font-size: 1.2rem;
@@ -388,7 +394,7 @@
         }
 
         .faq-item p {
-            color: #333;
+            color: #C9DCE8;
             font-size: 0.9rem;
             line-height: 1.6;
             padding: 0.4rem 0.5rem;
@@ -441,7 +447,7 @@
         <button class="filter-btn" onclick="filterProducts('Wuthering Waves')">Wuthering Waves</button>
         <button class="filter-btn" onclick="filterProducts('Arknights')">Arknights</button>
         <button class="filter-btn" onclick="filterProducts('Arknights Endfield')">Arknights Endfield</button>
-        <button class="filter-btn" onclick="filterProducts('Neverness to everness')">Neverness to Everness</button>
+        <button class="filter-btn" onclick="filterProducts('Neverness to Everness')">Neverness to Everness</button>
         <button class="filter-btn" onclick="filterProducts('ANIIMO')">ANIIMO</button>
         <button class="filter-btn" onclick="filterProducts('Girls Frontline')">Girls Frontline</button>
         <button class="filter-btn" onclick="filterProducts('Goddess of Victory: NIKKE')">NIKKE</button>
@@ -449,7 +455,7 @@
         <button class="filter-btn" onclick="filterProducts('Stella Sora')">Stella Sora</button>
         <button class="filter-btn" onclick="filterProducts('Reverse: 1999')">Reverse: 1999</button>
         <button class="filter-btn" onclick="filterProducts('Love and Deepspace')">Love and Deepspace</button>
-        <button class="filter-btn" onclick="filterProducts('RiotGames')">RiotGames</button>
+        <button class="filter-btn" onclick="filterProducts('Riotgames')">RiotGames</button>
         <button class="filter-btn btn-faq" onclick="openFaqModal()">📜 Reglas & FAQ</button>
     </div>
 
@@ -659,7 +665,7 @@
                     'img/ZZZ/Productos general/cartasflash.png',
                     'img/ZZZ/Productos general/cartascard2.png'
                 ],
-                desc: 'Pines metálicos de aleación de zinc. Puedes solicitar la unidad que gustes o el pack completo con descuento especial.'
+                desc: 'Coleccion de Cartas de colaboracion de Zenless Zone Zero x Flash Soul Vol2. Tiempo estimado de importación: 2 a 3 meses.'
             },
             {
                 id: 14003,
@@ -695,6 +701,37 @@
                     'img/NTE/lAWSON/neverness_everness_lawson_peluches_muñecos_personajes.png'
                 ],
                 desc: 'Peluche coleccionable conmemorativo de la colaboración oficial entre Neverness to Everness y Lawson. Disponible en versiones de los personajes Lacrimosa, Mint y Blackbird con trajes temáticos removibles de la tienda mediante cierre de velcro. Confeccionado en tela ultrasuave con acabados y costuras de alta calidad. Producto oficial con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 2022,
+                name: 'Figuras Chibi Serie Cuties x APEX-TOYS',
+                game: 'Arknights Endfield',
+                variants: [
+                    { name: 'Perlica', price: 170.00 },
+                    { name: 'Administradora (Femenina)', price: 170.00 }
+                ],
+                gallery: [
+                    'img/ArkEnd/Figuras/arknights_endfield_cuties_figuras_chibi_perlica_administradora.png',
+                    'img/ArkEnd/Figuras/arknights_endfield_cuties_figura_chibi_administradora_femenina.png',
+                    'img/ArkEnd/Figuras/arknights_endfield_cuties_figura_chibi_perlica.png'
+                ],
+                desc: 'Figuras coleccionables versión Q (chibi) de la serie Cuties oficiales de Arknights: Endfield, desarrolladas por APEX-TOYS en colaboración con Hypergryph. Incluye a los personajes Perlica y la Edministradora acompañadas de pequeños accesorios y criaturitas. Esculpidas en PVC/ABS con acabados y pintado de alta calidad. Producto oficial con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
+            },
+            {
+                id: 2021,
+                name: 'Figuras Chibi Serie ChatChat',
+                game: 'Arknights Endfield',
+                variants: [
+                    { name: 'Zhuang Fangyi', price: 148.00 },
+                    { name: 'Tangtang', price: 148.00 },
+                    { name: 'Set Completo (x2)', price: 266.00 }
+                ],
+                gallery: [
+                    'img/ArkEnd/Figuras/arknights_endfield_chatchat_figuras_chibi_zhuang_fangyi_tangtang.png',
+                    'img/ArkEnd/Figuras/arknights_endfield_chatchat_figura_chibi_tangtang.png',
+                    'img/ArkEnd/Figuras/arknights_endfield_chatchat_figura_chibi_zhuang_fangyi.png'
+                ],
+                desc: 'Figuras coleccionables versión Q (chibi) de la serie ChatChat oficiales de Arknights: Endfield, producidas por Hypergryph. Incluye a los personajes Zhuang Fangyi y Tangtang con accesorios de mesa de té y detalles expresivos finamente moldeados en PVC/ABS. Disponibles individualmente o en set completo de 2 unidades[cite: 17]. Producto oficial con empaque protector. Tiempo estimado de importación: 2 a 3 meses.'
             },
             {
                 id: 1001,
